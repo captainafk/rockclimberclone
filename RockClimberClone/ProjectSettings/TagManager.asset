@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - PlayerRagdollCollider
+  - BoundaryCollider
+  - TargetableCollider
   - 
   - 
   - 
