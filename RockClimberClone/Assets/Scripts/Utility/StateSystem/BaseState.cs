@@ -11,9 +11,11 @@ namespace RockClimber
 
         public abstract T GetStateID();
 
-        public abstract void OnEnterCustomActions();
+        protected abstract void OnEnterCustomActions();
 
-        public abstract void OnExitCustomActions();
+        protected virtual void OnExitCustomActions()
+        {
+        }
 
         public void OnEnterActions()
         {

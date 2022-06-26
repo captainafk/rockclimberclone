@@ -1,6 +1,5 @@
-using UniRx;
-using UnityEngine;
 using Lean.Touch;
+using UnityEngine;
 
 namespace RockClimber
 {
@@ -8,32 +7,17 @@ namespace RockClimber
     {
         [SerializeField] private LayerMask _targetableLayer;
 
-        private void Awake()
-        {
-            MessageBus.Receive<OnLevelStarted>()
-                      .Subscribe(ge => EnableInput());
-        }
+        public void EnableInput() => LeanTouch.OnFingerDown += HandleInput;
 
-        private void EnableInput() => LeanTouch.OnFingerDown += HandleInput;
-
-        private void DisableInput() => LeanTouch.OnFingerDown -= HandleInput;
+        public void DisableInput() => LeanTouch.OnFingerDown -= HandleInput;
 
         private void HandleInput(LeanFinger finger)
         {
             var ray = finger.GetRay();
-            if (Physics.Raycast(ray, 100, _targetableLayer))
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, _targetableLayer))
             {
-                print("Nice!");
-            }
-        }
-
-        // Temporary - for debugging purposes
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                MessageBus.Publish(new OnLevelStarted());
-                print("Game Started");
+                MessageBus.Publish(new OnTargetableTargeted(hit.transform));
             }
         }
     }
