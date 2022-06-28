@@ -15,6 +15,11 @@ namespace RockClimber
             {
                 StateManager.SetTransition(EPlayerState.Hanging);
             });
+
+            MessageBus.Receive<OnTargetableReached>().Subscribe(ge =>
+            {
+                StateManager.SetTransition(EPlayerState.Hanging);
+            });
         }
 
         protected override void OnEnterCustomActions()

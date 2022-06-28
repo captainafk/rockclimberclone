@@ -5,6 +5,8 @@ namespace RockClimber
 {
     public class PlayerMovingState : BaseState<EPlayerState>
     {
+        [SerializeField] private PlayerMovementController _movementController;
+
         private Transform _target;
 
         public override EPlayerState GetStateID() => EPlayerState.Moving;
@@ -21,6 +23,8 @@ namespace RockClimber
 
         protected override void OnEnterCustomActions()
         {
+            _movementController.Move(_target.position,
+                                     () => MessageBus.Publish(new OnTargetableReached()));
         }
     }
 }
