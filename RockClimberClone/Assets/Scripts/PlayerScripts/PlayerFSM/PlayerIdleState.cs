@@ -16,7 +16,6 @@ namespace RockClimber
             LeanTouch.OnFingerDown -= HandleFirstTap;
 
             MessageBus.Publish(new OnLevelStarted());
-            print("Game Started");
         }
     }
 }
