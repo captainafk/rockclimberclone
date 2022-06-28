@@ -10,10 +10,12 @@ namespace RockClimber
 
         private Rigidbody _handRB;
         private IEnumerator _moveRoutine;
+        private int _lastUsedHandIndex = 0;
 
         public void Move(Vector3 target, Action onComplete = null)
         {
-            _handRB = _player.Hands.GetRandom().GetComponent<Rigidbody>();
+            _handRB = _player.Hands[_lastUsedHandIndex].GetComponent<Rigidbody>();
+            _lastUsedHandIndex = (_lastUsedHandIndex + 1) % _player.Hands.Count;
 
             if (_moveRoutine != null)
             {
