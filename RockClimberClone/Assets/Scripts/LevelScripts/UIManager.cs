@@ -9,14 +9,17 @@ namespace RockClimber
         [SerializeField] private GameObject _successUI;
         [SerializeField] private GameObject _failUI;
 
+        private System.IDisposable _d1;
+        private System.IDisposable _d2;
+
         private void Awake()
         {
-            MessageBus.Receive<OnLevelStarted>().Subscribe(ge =>
+            _d1 = MessageBus.Receive<OnLevelStarted>().Subscribe(ge =>
             {
                 _startUI.SetActive(false);
             });
 
-            MessageBus.Receive<OnLevelFinished>().Subscribe(ge =>
+            _d2 = MessageBus.Receive<OnLevelFinished>().Subscribe(ge =>
             {
                 if (ge.IsLevelSuccessful)
                 {
@@ -27,6 +30,12 @@ namespace RockClimber
                     _failUI.SetActive(true);
                 }
             });
+        }
+
+        private void OnDestroy()
+        {
+            _d1?.Dispose();
+            _d2?.Dispose();
         }
     }
 }

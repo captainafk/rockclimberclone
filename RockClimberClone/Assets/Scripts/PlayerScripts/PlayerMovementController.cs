@@ -49,5 +49,13 @@ namespace RockClimber
                 yield return new WaitForFixedUpdate();
             }
         }
+
+        public void StopMovement()
+        {
+            if (_moveRoutine != null)
+            {
+                StopCoroutine(_moveRoutine);
+            }
+        }
     }
 }

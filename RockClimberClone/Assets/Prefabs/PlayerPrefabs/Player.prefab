@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateManager: {fileID: 5135805171111284238}
+  _movementController: {fileID: 8218835474858454387}
 --- !u!1 &2855556606019768035
 GameObject:
   m_ObjectHideFlags: 0

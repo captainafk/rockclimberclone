@@ -9,5 +9,10 @@ namespace RockClimber
         {
             return list[Random.Range(0, list.Count)];
         }
+
+        public static bool IsInLayerMask(int layer, LayerMask layerMask)
+        {
+            return (layerMask & (1 << layer)) != 0;
+        }
     }
 }

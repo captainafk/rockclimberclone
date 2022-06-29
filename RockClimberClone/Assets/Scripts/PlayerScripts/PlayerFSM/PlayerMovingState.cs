@@ -8,12 +8,13 @@ namespace RockClimber
         [SerializeField] private PlayerMovementController _movementController;
 
         private Transform _target;
+        private System.IDisposable _d1;
 
         public override EPlayerState GetStateID() => EPlayerState.Moving;
 
         private void Awake()
         {
-            MessageBus.Receive<OnTargetableTargeted>().Subscribe(ge =>
+            _d1 = MessageBus.Receive<OnTargetableTargeted>().Subscribe(ge =>
             {
                 _target = ge.Target;
 
@@ -25,6 +26,11 @@ namespace RockClimber
         {
             _movementController.Move(_target.position,
                                      () => MessageBus.Publish(new OnTargetableReached()));
+        }
+
+        private void OnDestroy()
+        {
+            _d1?.Dispose();
         }
     }
 }

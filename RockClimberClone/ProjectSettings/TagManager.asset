@@ -14,7 +14,7 @@ TagManager:
   - PlayerRagdollCollider
   - BoundaryCollider
   - TargetableCollider
-  - 
+  - ObstacleCollider
   - 
   - 
   - 

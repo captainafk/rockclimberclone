@@ -7,16 +7,19 @@ namespace RockClimber
     {
         [SerializeField] private PlayerInputController _inputController;
 
+        private System.IDisposable _d1;
+        private System.IDisposable _d2;
+
         public override EPlayerState GetStateID() => EPlayerState.Hanging;
 
         private void Awake()
         {
-            MessageBus.Receive<OnLevelStarted>().Subscribe(ge =>
+            _d1 = MessageBus.Receive<OnLevelStarted>().Subscribe(ge =>
             {
                 StateManager.SetTransition(EPlayerState.Hanging);
             });
 
-            MessageBus.Receive<OnTargetableReached>().Subscribe(ge =>
+            _d2 = MessageBus.Receive<OnTargetableReached>().Subscribe(ge =>
             {
                 StateManager.SetTransition(EPlayerState.Hanging);
             });
@@ -30,6 +33,12 @@ namespace RockClimber
         protected override void OnExitCustomActions()
         {
             _inputController.DisableInput();
+        }
+
+        private void OnDestroy()
+        {
+            _d1?.Dispose();
+            _d2?.Dispose();
         }
     }
 }

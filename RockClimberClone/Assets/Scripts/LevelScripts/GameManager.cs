@@ -6,6 +6,7 @@ namespace RockClimber
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private float _levelLoadDelay = 3;
         [SerializeField] private List<LevelBase> _levels;
 
         private LevelBase _activeLevel;
@@ -29,14 +30,18 @@ namespace RockClimber
 
             MessageBus.Receive<OnLevelFinished>().Subscribe(ge =>
             {
-                Destroy(_activeLevel);
-
-                if (ge.IsLevelSuccessful)
+                Observable.Timer(System.TimeSpan.FromSeconds(_levelLoadDelay))
+                          .Subscribe(_ =>
                 {
-                    ActiveLevelIndex = (ActiveLevelIndex + 1) % _levels.Count;
-                }
+                    Destroy(_activeLevel.gameObject);
 
-                _activeLevel = Instantiate(_levels[ActiveLevelIndex]);
+                    if (ge.IsLevelSuccessful)
+                    {
+                        ActiveLevelIndex = (ActiveLevelIndex + 1) % _levels.Count;
+                    }
+
+                    _activeLevel = Instantiate(_levels[ActiveLevelIndex]);
+                });
             });
         }
     }
