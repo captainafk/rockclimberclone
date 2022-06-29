@@ -17,6 +17,7 @@ namespace RockClimber
             _d1 = MessageBus.Receive<OnLevelStarted>().Subscribe(ge =>
             {
                 _startUI.SetActive(false);
+                _d1.Dispose();
             });
 
             _d2 = MessageBus.Receive<OnLevelFinished>().Subscribe(ge =>
@@ -29,13 +30,9 @@ namespace RockClimber
                 {
                     _failUI.SetActive(true);
                 }
-            });
-        }
 
-        private void OnDestroy()
-        {
-            _d1?.Dispose();
-            _d2?.Dispose();
+                _d2.Dispose();
+            });
         }
     }
 }

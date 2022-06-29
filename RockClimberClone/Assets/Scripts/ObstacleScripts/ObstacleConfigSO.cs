@@ -10,6 +10,6 @@ namespace RockClimber
         [Range(0, 720)] public float SpinSpeed = 360;
 
         [Tooltip("Move speed is in units per second.")]
-        [Range(0, 10)] public float MoveSpeed = 1;
+        [Range(0, 5)] public float MoveSpeed = 1;
     }
 }

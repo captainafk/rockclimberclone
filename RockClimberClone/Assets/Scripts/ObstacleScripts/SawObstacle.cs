@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace RockClimber
 {
+    [SelectionBase]
     public class SawObstacle : ObstacleBase
     {
         [SerializeField] private Transform _sawTarget;

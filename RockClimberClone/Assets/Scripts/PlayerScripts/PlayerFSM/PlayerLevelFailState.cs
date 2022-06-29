@@ -19,17 +19,14 @@ namespace RockClimber
                 {
                     StateManager.SetTransition(EPlayerState.LevelFail);
                 }
+
+                _d1?.Dispose();
             });
         }
 
         protected override void OnEnterCustomActions()
         {
             _movementController.StopMovement();
-        }
-
-        private void OnDestroy()
-        {
-            _d1?.Dispose();
         }
     }
 }

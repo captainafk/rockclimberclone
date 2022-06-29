@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ObstacleConfig
   m_EditorClassIdentifier: 
   SpinSpeed: 360
-  MoveSpeed: 1
+  MoveSpeed: 0.5
