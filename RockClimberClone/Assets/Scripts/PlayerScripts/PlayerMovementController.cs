@@ -40,7 +40,7 @@ namespace RockClimber
                                     direction.normalized,
                                  ForceMode.Acceleration);
 
-                if (!isCompleted && sqrDistance <= 0.1f)
+                if (!isCompleted && sqrDistance <= 0.5f)
                 {
                     isCompleted = true;
                     onComplete?.Invoke();

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f684da49a13738448878eeb993ea8202, type: 3}
-  m_Name: PlayerConfig
+  m_Script: {fileID: 11500000, guid: 7ac5737dafe4516429a13c75fe88ffd6, type: 3}
+  m_Name: DynamicSaw
   m_EditorClassIdentifier: 
-  MoveSpeed: 12500
+  SpinSpeed: 360
+  MoveSpeed: 0.5

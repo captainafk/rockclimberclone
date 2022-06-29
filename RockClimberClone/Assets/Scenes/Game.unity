@@ -219,8 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff71aafcea8769546a872e1ae7dd6bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelLoadDelay: 3
   _levels:
   - {fileID: 1568101457693678773, guid: 6f24760939a5ce04fb53d79d755d623c, type: 3}
+  - {fileID: 1568101457693678773, guid: c7492d2ec4e101c40bb55b05ea78af64, type: 3}
 --- !u!4 &550182210
 Transform:
   m_ObjectHideFlags: 0

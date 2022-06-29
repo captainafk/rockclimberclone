@@ -6,6 +6,6 @@ namespace RockClimber
     public class PlayerConfigSO : ScriptableObject
     {
         [Header("Movement Config")]
-        [Range(10000, 20000)] public float MoveSpeed = 12500;
+        [Range(10000, 25000)] public float MoveSpeed = 12500;
     }
 }

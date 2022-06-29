@@ -20,11 +20,14 @@ namespace RockClimber
                                   .SetSpeedBased()
                                   .SetLoops(-1, LoopType.Incremental);
 
-            _moveTween = transform.DOMove(_sawTarget.position,
-                                          _obstacleConfig.MoveSpeed)
-                                   .SetEase(Ease.Linear)
-                                   .SetSpeedBased()
-                                   .SetLoops(-1, LoopType.Yoyo);
+            if (_obstacleConfig.MoveSpeed != 0)
+            {
+                _moveTween = transform.DOMove(_sawTarget.position,
+                                              _obstacleConfig.MoveSpeed)
+                                      .SetEase(Ease.Linear)
+                                      .SetSpeedBased()
+                                      .SetLoops(-1, LoopType.Yoyo);
+            }
         }
 
         private void OnDestroy()
